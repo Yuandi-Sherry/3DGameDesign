@@ -50,7 +50,7 @@
     }
     ```
 
-  - ![pro2](C:\Users\Sherry\Documents\Curriculums\3D Game Design\Homework1 - 井字棋\pro2.png)
+  - ![pro2](简答题配图\pro2.png)
 
 - 查找脚本手册，了解GameObject，Transform，Component 对象
 
@@ -85,7 +85,7 @@
 
   - 用UML 图描述 三者的关系（请使用 UMLet 14.1.1 stand-alone版本出图）
 
-    ![UML - GameObject, Component, Transform](C:\Users\Sherry\Documents\Curriculums\3D Game Design\Homework1 - 井字棋\UML - GameObject, Component, Transform.jpg)
+    ![UML - GameObject, Component, Transform](简答题配图\UML - GameObject, Component, Transform.jpg)
 
 - 整理相关学习资料，编写简单代码验证以下技术的实现：
 
@@ -156,9 +156,9 @@
       ```
       运行结果：
 
-      ![tablePrefabResult](C:\Users\Sherry\Documents\Curriculums\3D Game Design\Homework1 - 井字棋\tablePrefabResult.PNG)
+      ![tablePrefabResult](简答题配图\tablePrefabResult.PNG)
 
-      ![tablePrefabResult2](C:\Users\Sherry\Documents\Curriculums\3D Game Design\Homework1 - 井字棋\tablePrefabResult2.PNG)
+      ![tablePrefabResult2](简答题配图\tablePrefabResult2.PNG)
 
 - 尝试解释组合模式（Composite Pattern / 一种设计模式）。使用 `BroadcastMessage()`方法向子对象发送消息
 
@@ -187,7 +187,7 @@
   ```
   运行结果：
 
-  ![broadCast](C:\Users\Sherry\Documents\Curriculums\3D Game Design\Homework1 - 井字棋\broadCast.PNG)
+  ![broadCast](简答题配图\broadCast.PNG)
 
 [^1]: https://docs.unity3d.com/ScriptReference/GameObject.html
 [^2]: https://docs.unity3d.com/Manual/AssetWorkflow.html
