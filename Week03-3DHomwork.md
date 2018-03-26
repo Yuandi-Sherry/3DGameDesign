@@ -1,6 +1,6 @@
 # Week 03 - Homework
 
-- 解释 游戏对象（GameObjects） 和 资源（Assets）的区别与联系。
+## 解释 游戏对象（GameObjects） 和 资源（Assets）的区别与联系。
 
   - **游戏对象**是Unity中最基础的对象，它可以代表游戏角色、 游戏道具和游戏场景。它们本身不会并不会为游戏贡献很多，但是它们却作为**组件**（展现真正游戏效果）的容器发挥着重要作用。[^1]
   - 资源是能够用在游戏中的事物，可以来自Unity外创建的文件，比如3D模型、音频文件、图像，或是任何Unity支持的其他文件类型。同时，Unity内部也可以创建很多资源类型，比如动画控制器、音频混合器和渲染纹理等等。[^2]
@@ -11,7 +11,7 @@
     1. 游戏对象可以作为资源的一部分；
     2. 游戏资源既可以成为游戏对象本身，也可以作为游戏对象的一种属性使游戏对象更为生动。
 
-- 编写一个代码，使用 debug 语句来验证MonoBehaviour基本行为或事件触发的条件
+## 编写一个代码，使用 debug 语句来验证MonoBehaviour基本行为或事件触发的条件
 
   - 基本行为包括 Awake() Start() Update() FixedUpdate() LateUpdate()
 
@@ -52,7 +52,7 @@
 
   - ![pro2](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/简答题配图/pro2.png)
 
-- 查找脚本手册，了解GameObject，Transform，Component 对象
+## 查找脚本手册，了解GameObject，Transform，Component 对象
 
   - 分别翻译官方对三个对象的描述（Description）
 
@@ -87,7 +87,7 @@
 
     ![UML - GameObject, Component, Transform](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/%E7%AE%80%E7%AD%94%E9%A2%98%E9%85%8D%E5%9B%BE/UML%20-%20GameObject%2C%20Component%2C%20Transform.jpg)
 
-- 整理相关学习资料，编写简单代码验证以下技术的实现：
+## 整理相关学习资料，编写简单代码验证以下技术的实现：
 
   - 查找对象[^9]：
 
@@ -135,7 +135,7 @@
       }
       ```
 
-- 资源预设（Prefabs）与 对象克隆 (clone)
+## 资源预设（Prefabs）与 对象克隆 (clone)
 
   - 预设（Prefabs）有什么好处？[^10]
     - 当需要创建一个在场景中要被多次使用的对象时，比如：NPC，游戏道具或者一小部分游戏场景。简单复制出来的多个对象，在需要修改的时候，需要一个一个单独编辑，会造成很大的不方便。**预设**就是这样一个可以存放实例（组件和性质齐全的游戏对象）的对象，其中的实例有着相同的属性，需要编辑的时候只需要编辑一个对象就可以对所有对象生效了。
@@ -158,7 +158,7 @@
       ![tablePrefabResult](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/简答题配图/tablePrefabResult.PNG)
       ![tablePrefabResult2](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/简答题配图/tablePrefabResult2.PNG)
 
-- 尝试解释组合模式（Composite Pattern / 一种设计模式）。使用 `BroadcastMessage()`方法向子对象发送消息
+## 尝试解释组合模式（Composite Pattern / 一种设计模式）。使用 `BroadcastMessage()`方法向子对象发送消息
 
   `public void BroadcastMessage(string methodName, object parameter = null, SendMessageOptions options = SendMessageOptions.RequireReceiver)`
 
