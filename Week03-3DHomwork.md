@@ -50,7 +50,7 @@
     }
     ```
 
-  - ![pro2](简答题配图\pro2.png)
+  - ![pro2](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/简答题配图/pro2.png)
 
 - 查找脚本手册，了解GameObject，Transform，Component 对象
 
@@ -85,7 +85,7 @@
 
   - 用UML 图描述 三者的关系（请使用 UMLet 14.1.1 stand-alone版本出图）
 
-    ![UML - GameObject, Component, Transform](简答题配图\UML - GameObject, Component, Transform.jpg)
+    ![UML - GameObject, Component, Transform](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/%E7%AE%80%E7%AD%94%E9%A2%98%E9%85%8D%E5%9B%BE/UML%20-%20GameObject%2C%20Component%2C%20Transform.jpg)
 
 - 整理相关学习资料，编写简单代码验证以下技术的实现：
 
@@ -155,10 +155,8 @@
       }
       ```
       运行结果：
-
-      ![tablePrefabResult](简答题配图\tablePrefabResult.PNG)
-
-      ![tablePrefabResult2](简答题配图\tablePrefabResult2.PNG)
+      ![tablePrefabResult](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/简答题配图/tablePrefabResult.PNG)
+      ![tablePrefabResult2](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/简答题配图/tablePrefabResult2.PNG)
 
 - 尝试解释组合模式（Composite Pattern / 一种设计模式）。使用 `BroadcastMessage()`方法向子对象发送消息
 
@@ -186,8 +184,7 @@
   }
   ```
   运行结果：
-
-  ![broadCast](简答题配图\broadCast.PNG)
+  ![broadCast](https://github.com/Yuandi-Sherry/3DGameDesign/blob/master/%E7%AE%80%E7%AD%94%E9%A2%98%E9%85%8D%E5%9B%BE/broadCast.PNG)
 
 [^1]: https://docs.unity3d.com/ScriptReference/GameObject.html
 [^2]: https://docs.unity3d.com/Manual/AssetWorkflow.html
