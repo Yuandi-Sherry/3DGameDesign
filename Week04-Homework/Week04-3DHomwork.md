@@ -73,13 +73,13 @@
      >
      > ​	Rotates the transform about `axis` passing through `point` in world coordinates by `angle` degrees.
 
-	2. `Rotate`：用于控制行星的自转
+ 2. `Rotate`：用于控制行星的自转
 
-    > `public void Rotate(Vector3 eulerAngles, Space relativeTo = Space.Self)`
-    >
-    > ​	Applies a rotation of `eulerAngles.z` degrees around the z axis, `eulerAngles.x` degrees around the x axis, and `eulerAngles.y`degrees around the y axis (in that order).
-    >
-    > ​	If `relativeTo` is not specified or set to Space.Self the rotation is applied around the transform's local axes. If `relativeTo` is set to Space.World the rotation is applied around the world x, y, z axes.
+     > `public void Rotate(Vector3 eulerAngles, Space relativeTo = Space.Self)`
+     >
+     > ​	Applies a rotation of `eulerAngles.z` degrees around the z axis, `eulerAngles.x` degrees around the x axis, and `eulerAngles.y`degrees around the y axis (in that order).
+     >
+     > ​	If `relativeTo` is not specified or set to Space.Self the rotation is applied around the transform's local axes. If `relativeTo` is set to Space.World the rotation is applied around the world x, y, z axes.
 
     - 第一步：创建Sphere作为太阳、八大行星、月球，贴图Sphere，这个[连接](https://tieba.baidu.com/p/4876471245?red_tag=0043515197)有比较好看的贴图；并在Hierarchy构造好他们的继承关系。（如果愿意的话可以查一下各个行星的大小比例会做得更逼真一点）
 
