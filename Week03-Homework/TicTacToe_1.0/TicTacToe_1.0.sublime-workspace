@@ -1,0 +1,523 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fo",
+				"fontSize"
+			],
+			[
+				"tec",
+				"TextAnchor"
+			],
+			[
+				"Cl",
+				"Color"
+			],
+			[
+				"but",
+				"buttonStyle"
+			],
+			[
+				"bu",
+				"buttonStyle"
+			],
+			[
+				"temp",
+				"tempResult"
+			],
+			[
+				"ing",
+				"inGameProcess"
+			],
+			[
+				"re",
+				"reset"
+			],
+			[
+				"in",
+				"inGame"
+			],
+			[
+				"fa",
+				"false"
+			],
+			[
+				"Pl",
+				"player1"
+			],
+			[
+				"en",
+				"endGame"
+			],
+			[
+				"pl",
+				"player2"
+			],
+			[
+				"pal",
+				"player1"
+			],
+			[
+				"L",
+				"LabelWidth"
+			],
+			[
+				"win",
+				"winner"
+			],
+			[
+				"pla",
+				"player2"
+			],
+			[
+				"play",
+				"player1"
+			],
+			[
+				"Ra",
+				"Range(int min, int max)\tint"
+			],
+			[
+				"U",
+				"Update"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"B",
+				"ButtonLength"
+			],
+			[
+				"G",
+				"GameOn"
+			],
+			[
+				"cen",
+				"centerX"
+			],
+			[
+				"cou",
+				"Count"
+			],
+			[
+				"Unity",
+				"UnityEngine"
+			],
+			[
+				"game",
+				"gameObject"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"MOVE",
+				"moveVertical"
+			],
+			[
+				"R",
+				"REFERENCES"
+			],
+			[
+				"C",
+				"CHAR"
+			],
+			[
+				"F",
+				"FROM"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "TicTacToe_1.0.sln",
+			"settings":
+			{
+				"buffer_size": 1003,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/TicTacToe.cs",
+			"settings":
+			{
+				"buffer_size": 4998,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Sherry/.ssh/id_rsa.pub",
+			"settings":
+			{
+				"buffer_size": 399,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "using UnityEngine;\nusing System.Collections;\n\npublic class TicTacToe : MonoBehaviour {\n\tprivate int ButtonLength = 60;\n\tprivate bool GameOn = false;\n\tprivate int count = 0;\n\tprivate int win = 0;//0 for not end, 1 for first win, 2 for second win, 3 for equal\n\tprivate int LabelWidth = 100;\n\tpublic Texture2D icon;\n\tpublic Texture2D background1;\n\tpublic GUIStyle startButton;\n\tprivate bool Player = true;//true 1st player, false 2nd player\n\tprivate int  [,] state = new int[3,3];\n\tvoid start() {\n\t\tfor(int i = 0; i < 3; i++) {\n    \t\tfor(int j = 0; j < 3; j++) {\n    \t\t\tstate[i, j] = 0;\n    \t\t}\n    \t}\n\t}\n    void OnGUI() {\n    \tGUIStyle bg = new GUIStyle();\n    \tbg.normal.background = background1;\n    \tif(!GameOn) {\n    \t\tif(GUI.Button(new Rect((Screen.width - ButtonLength)/2, (Screen.height - ButtonLength)/2, ButtonLength, ButtonLength),\"START\", startButton)) {\n    \t\t\tGameOn = true;\n    \t\t}\n    \t}\n    \t\t\n    \tif(GameOn) {\n    \t\tfor(int i = 0; i < 3; i++) {\n\t    \t\tfor(int j = 0; j < 3; j++) {\n\t    \t\t\tif (GUI.Button(new Rect((Screen.width - ButtonLength)/2 + (j-1)*ButtonLength, (Screen.height - ButtonLength)/2 + (i-1)*ButtonLength, ButtonLength, ButtonLength), icon)) {\n\t    \t\t\t\tif(state[i,j] == 0 && win == 0) {\n\t    \t\t\t\t\tcount++;\n\t\t            \t\tif(Player) {\n\t\t            \t\t\tstate[i,j] = 1;\n\t\t            \t\t}\n\t\t            \t\telse {\n\t\t            \t\t\tstate[i,j] = 2;\n\t\t            \t\t}\n\t\t            \t\tPlayer = !Player;\n\t    \t\t\t\t}\n\t    \t\t\t}\n\t    \t\t}\n\t    \t}\n\t    \tcheck();\n\t    \tif(win == 1) {\n\t    \t\tGUI.Label(new Rect((Screen.width-LabelWidth)/2, 0, 100, 100), \"first player win\");\n\t    \t} \n\t    \telse if(win == 2) {\n\t    \t\tGUI.Label(new Rect(0, 0, 100, 100), \"seond player win\");\n\t    \t}\n\t    \telse if(win == 3) {\n\t    \t\tGUI.Label(new Rect(0, 0, 100, 100), \"nobody wins\");\n\t    \t}\n    \t}\n\t    \t    \n    }\n    void check() {\n    \t//检查每行\n    \tfor(int i = 0; i < 3; i++) {\n    \t\tif(state[i,0] == state[i,1] && state[i,1] == state[i,2]) {\n    \t\t\tif(state[i,0] == 1) {\n    \t\t\t\twin = 1;\n    \t\t\t\tprint(\"the first player wins the game\");\n    \t\t\t}\n    \t\t\telse if(state[i,0] == 2) {\n    \t\t\t\twin = 2;\n    \t\t\t\tprint(\"the second player wins the game\");\n    \t\t\t}\n    \t\t}\n    \t}\n    \t//检查每列\n    \tfor(int i = 0; i < 3; i++) {\n    \t\tif(state[0,i] == state[1,i] && state[1,i] == state[2,i]) {\n    \t\t\t\n    \t\t\tif(state[0,i] == 1) {\n    \t\t\t\twin = 1;\n    \t\t\t\tprint(\"the first player wins the game\");\n    \t\t\t}\n    \t\t\t\t\n    \t\t\telse if(state[0,i] == 2) {\n    \t\t\t\twin = 2;\n    \t\t\t\tprint(\"the second player wins the game\");\n    \t\t\t}\n    \t\t}\n    \t}\n    \t//检查对角线\n    \tif(state[0,0] == state[1,1] && state[1,1] == state[2,2]) {\n    \t\tif(state[0,0] == 1) {\n    \t\t\twin = 1;\n    \t\t\tprint(\"the first player wins the game\");\n    \t\t}\n    \t\telse if(state[0,0] == 2) {\n    \t\t\twin = 2;\n    \t\t\tprint(\"the second player wins the game\");\n    \t\t}\n    \t}\n\n    \tif(state[0,2] == state[1,1] && state[1,1] == state[2,0]) {\n    \t\tif(state[0,2] == 1) {\n    \t\t\twin = 1;\n    \t\t\tprint(\"the first player wins the game\");\n    \t\t}\n    \t\telse if(state[0,2] == 2) {\n    \t\t\twin = 2;\n    \t\t\tprint(\"the second player wins the game\");\n    \t\t}\n    \t}\n    \tif(win == 0 && count == 9)\n    \t\tprint(\"ping\");\n    }\n}",
+			"file": "Assets/Scripts/rigid.cs",
+			"file_size": 3302,
+			"file_write_time": 131662863656142876,
+			"settings":
+			{
+				"buffer_size": 3159,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 489.0,
+		"last_filter": "package control: ins",
+		"selected_items":
+		[
+			[
+				"package control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 652.0
+	},
+	"console":
+	{
+		"height": 337.0,
+		"history":
+		[
+			"CompleteSharp",
+			"input",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os;pf=’Package Control.sublime-package’;ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),’wb’).write(urllib.request.urlopen(‘http://sublime.wbond.net/‘+pf.replace(’ ‘,’%20’)).read()) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/TicTacToe_1.0",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/TicTacToe_1.0/Assets",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/TicTacToe_1.0/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/C/Users/Sherry/.ssh/id_rsa",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/TicTacToe_1.0/Assets/Scripts/rigid.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Week3_test_2.0.sublime-project",
+		"/C/Users/Sherry/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/PrebuiltOmniSharpServer/config.json",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/InitBeh_another.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/PrefabBeh.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/BroadcastTest.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/ParentCall.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/ChildCalled.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/ChildCalled1.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/TicTacToe_1.0/Assets/Scripts/NewBehaviourScript.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/ChildCalled2.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/ChildCalled3.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/ChildCalled4.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/Scripts/NewBehaviourScript.cs",
+		"/C/Users/Sherry/AppData/Roaming/Sublime Text 3/Packages/OmniSharp/Default.sublime-keymap",
+		"/C/Users/Sherry/AppData/Roaming/Sublime Text 3/Packages/User/Default.sublime-keymap",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/20180322Chapter2-experiements/Assets/InitBeh_another.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Roll in a Ball Game/Roll a Ball/Assets/Scripts/PlayerController.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Roll in a Ball Game/Roll a Ball/Assets/Scripts/Rotator.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/20180322Chapter2-experiements/Assets/PrefabTest.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/Week3_test_2.0/Assets/CameraBeh.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Roll in a Ball Game/Roll a Ball/Assets/Scripts/CameraController.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/20180322Chapter2-experiements/Assets/copyObject.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/20180322Chapter2-experiements/Assets/testOrder.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/20180322Chapter2-experiements/Assets/InitBeh.cs",
+		"/C/Users/Sherry/AppData/Roaming/Sublime Text 3/Packages/User/OmniSharpSublime.sublime-settings",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Tic Tac Toe/20180322Chapter2-experiements/Assets/createObject.cs",
+		"/C/Users/Sherry/Documents/Curriculums/3D Game Design/Homework1 - 井字棋/reference - calculator.cs",
+		"/C/Users/Sherry/Documents/Curriculums/Database System/20180321.sql",
+		"/C/Users/Sherry/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Sherry/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Sherry/Documents/Curriculums/Database System/Homework/Homework1/3.14.sql",
+		"/C/Users/Sherry/Documents/Curriculums/Database System/Homework/Homework1/3.11.sql",
+		"/C/Users/Sherry/Documents/Curriculums/Database System/Homework/Homework1/3.8.sql",
+		"/C/Users/Sherry/Desktop/test.cpp"
+	],
+	"find":
+	{
+		"height": 59.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"30",
+			"fontStyle",
+			"(Screen.height - LabelHeight)/2",
+			"background1",
+			"endGame(\"player2\");",
+			"endGame(\"player1\");",
+			"inGameProcess",
+			"inGameScene",
+			"inGame",
+			"GameOn"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "TicTacToe_1.0.sln",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1003,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								876,
+								876
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 226.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/TicTacToe.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3786,
+								3788
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2574.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Sherry/.ssh/id_rsa.pub",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								399,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 196.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/rigid.cs",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3159,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 59.0
+	},
+	"input":
+	{
+		"height": 92.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 267.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 273.0
+	},
+	"pinned_build_system": "",
+	"project": "TicTacToe_1.0.sublime-project",
+	"replace":
+	{
+		"height": 108.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 457.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
